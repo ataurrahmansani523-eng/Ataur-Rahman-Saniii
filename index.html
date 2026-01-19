@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="pD-zC037vnnhJn9oJrJ_LNxdf-nTL2kj5_xrYPTGtOI" />
+
+    <title>Ataur Rahman Sani | Elite Personal Brand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #050505;
+            color: #E5E5E5;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-luxury { font-family: 'Cinzel', serif; }
+        .font-serif-elegant { font-family: 'Playfair Display', serif; }
+        
+        /* Custom scrollbar for luxury feel */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #C5A059; }
+
+        /* Animation for gold particles */
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+        }
+        .gold-particle {
+            position: absolute;
+            background: #C5A059;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 15s infinite linear;
+        }
+
+        /* Continuous Marquee for Songs */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 50s linear infinite;
+        }
+        .pause {
+            animation-play-state: paused;
+        }
+
+        /* Subtle Gold Gradient Text */
+        .text-gold {
+            background: linear-gradient(135deg, #C5A059 0%, #F5E6AD 50%, #C5A059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .border-gold {
+            border-color: #C5A059;
+        }
+
+        .bg-matte-black {
+            background-color: #0A0A0A;
+        }
+
+        /* Luxury Entrance Animations */
+        .reveal {
+            opacity: 0;
+            filter: blur(10px);
+            transform: translateY(20px);
+            transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                        filter 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        /* Philosophy Specific Staggered Word Reveal */
+        .reveal-word {
+            display: inline-block;
+            opacity: 0;
+            filter: blur(15px);
+            transform: translateY(30px) scale(0.95);
+            transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active .reveal-word {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0) scale(1);
+        }
+
+        /* Luxury Shimmer Effect */
+        @keyframes luxury-shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .luxury-shimmer-text {
+            background: linear-gradient(90deg, #555 0%, #E5E5E5 45%, #C5A059 50%, #E5E5E5 55%, #555 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: luxury-shine 10s linear infinite;
+        }
+
+        /* Staggered Delay Utilities */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
+        .delay-700 { transition-delay: 700ms; }
+        .delay-1000 { transition-delay: 1000ms; }
+
+        /* Luxury Text Tracking Animation */
+        .luxury-tracking {
+            letter-spacing: 0.1em;
+            transition: letter-spacing 2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active .luxury-tracking {
+            letter-spacing: 0.4em;
+        }
+
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(197, 160, 89, 0.1) 45%,
+                rgba(197, 160, 89, 0.4) 50%,
+                rgba(197, 160, 89, 0.1) 55%,
+                transparent 100%
+            );
+            transform: rotate(45deg);
+            transition: all 0.8s;
+            opacity: 0;
+        }
+        .shimmer-btn:hover::after {
+            left: 100%;
+            top: 100%;
+            opacity: 1;
+            transition: all 0.8s;
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(197, 160, 89, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+        }
+        .pulse-gold {
+            animation: pulse-gold 3s infinite;
+        }
+
+        /* Title Zoom Animation */
+        .hero-zoom {
+            animation: heroZoom 20s ease-out forwards;
+        }
+        @keyframes heroZoom {
+            from { transform: scale(1.1); }
+            to { transform: scale(1); }
+        }
+
+        /* Luxury Text Glow */
+        .luxury-glow {
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0);
+            transition: text-shadow 1s ease;
+        }
+        .reveal.active .luxury-glow {
+            text-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        .scan-line {
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes audio-pulse {
+            0% { transform: scaleY(0.8); }
+            50% { transform: scaleY(1.3); }
+            100% { transform: scaleY(0.8); }
+        }
+        .audio-bar {
+            animation: audio-pulse 1.2s ease-in-out infinite;
+        }
+
+        @keyframes slow-orbit {
+            from { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+        }
+        .orbiting-dot {
+            animation: slow-orbit 8s linear infinite;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
